@@ -1,0 +1,128 @@
+body{
+  margin:0;
+}
+*{
+  box-sizing: border-box;
+}
+.honor{
+  display:grid;
+  grid-template: 
+  "form" auto
+  "summary" auto
+  "brackets" auto
+  "loadLua" auto
+  / 1fr;
+  @media screen AND (min-width:820px){
+  grid-template: 
+  ".. form     .." auto
+  ".. brackets .." auto
+  ".. summary .." auto
+  ".. loadLua  .." auto
+  / 1fr 800px 1fr;
+  grid-gap: 0.5rem;
+  }
+  @media screen AND (min-width:1220px){
+    grid-template: 
+    ".. form     summary  .." auto
+    ".. brackets summary  .." auto
+    ".. brackets loadLua  .." 1fr
+    /1fr 800px   400px   1fr;
+    }
+
+
+  > section.form{
+    grid-area:form;
+    align-self: start;
+    display:grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    background-color: #303030;
+    color:white;
+    padding:0.5rem;
+    > input{
+      width: 100%;
+      padding:0.5rem;
+    }
+    > label{
+      padding:0.5rem;
+      width: 100%;
+      text-align: right;
+      &::after{
+        content:": "
+      }
+    }
+  }
+  >section.summary{
+    background-color: #303030;
+    color:white;
+    padding:0.5rem;
+    grid-area:summary;
+    align-self: start;
+    > p {
+      margin:0;
+      padding:0.5rem;
+    }
+  }
+  >section.table{
+    grid-area:brackets;
+    align-self: start;
+    >table{
+      border:none;
+      width: 100%;
+      text-align: right;
+      th{
+        background-color: #202020;
+        color:white;
+      }
+      th,td{
+        border:none;
+        padding:0.5rem;
+      }
+      tr:nth-child(2n){
+        background-color: #e0e0e0;
+      }
+      tr:nth-child(2n+1){
+        background-color: #f0f0f0;
+      }
+    }
+  }
+  >section.standings{
+    grid-area:loadLua;
+    align-self: start;
+    > h1 {
+      margin:0;
+      font-weight: normal;
+      font-size: 1.2rem;
+      background-color:#303030;
+      color:white;
+      padding:0.5rem;
+    }
+    >textarea{
+      width:100%;
+      display:block;
+      padding:0.5rem;
+      height:5rem;
+    }
+    >button{
+      display:block;
+      width:100%;
+    }
+    >ul {
+      padding:0;
+      margin:0;
+      list-style-type: none;
+      > li {
+        cursor:pointer;
+        padding:0.5rem;
+        border-bottom: 1px solid #e0e0e0;
+        &:nth-child(2n+1){
+          background-color:#f0f0f0;
+        }
+        &:hover{
+          background-color:#e0e0e0;
+        }
+      }
+    }
+  }
+
+}
